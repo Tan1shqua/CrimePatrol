@@ -43,30 +43,55 @@
 
         input,
         select {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
-            margin-bottom: 20px;
             background-color: #333;
             border: 1px solid #555;
             border-radius: 5px;
             color: #fff;
+            box-sizing: border-box;
         }
 
-        button {
-            width: 50%;
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group select,
+        .input-group input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .input-group .half {
+            width: calc(50% - 5px);
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        button.report-button,
+        button[type="submit"] {
+            width: 150px;
             padding: 10px;
-            background-color: #444;
+            background-color: orange;
             border: none;
             border-radius: 5px;
             color: #fff;
             font-size: 14px;
             cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
             display: block;
             margin: 0 auto;
         }
 
-        button:hover {
-            background-color: #555;
+        button.report-button:hover,
+        button[type="submit"]:hover {
+            background-color: #ff6600; /* Darker shade of orange on hover */
         }
 
         #map {
@@ -76,32 +101,65 @@
             border-radius: 10px;
             overflow: hidden;
         }
+        button.report-button,
+         button[type="submit"] {
+        width: 150px;
+        padding: 10px;
+        background-color: orange;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 20px;
+        text-align: center;
+        display: block;
+        margin: 10px auto; /* Adjusted margin here */
+}
+
+button.report-button:hover,
+button[type="submit"]:hover {
+    background-color: #ff6600; /* Darker shade of orange on hover */
+}
+
 
         @media (min-width: 600px) {
             .container {
                 width: 80%;
                 max-width: 900px;
             }
-        }
 
-        @media (min-width: 768px) {
-            .container {
-                width: 70%;
-                max-width: 1000px;
+            .input-group {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .input-group .half {
+                width: calc(50% - 10px);
+                margin-right: 0;
+            }
+
+            .input-group select,
+            .input-group input {
+                margin-bottom: 0;
+            }
+
+            button.report-button,
+            button[type="submit"] {
+                width: 30%;
+                margin-top: 0;
             }
         }
 
         @media (min-width: 992px) {
-            .container {
-                width: 60%;
-                max-width: 1100px;
+            .input-group .half {
+                width: calc(50% - 20px);
+                margin-right: 10px;
             }
-        }
 
-        @media (min-width: 1200px) {
-            .container {
-                width: 50%;
-                max-width: 1200px;
+            button.report-button,
+            button[type="submit"] {
+                width: 20%;
             }
         }
     </style>
@@ -110,56 +168,66 @@
 <body>
     <div class="container">
         <h1>Heatmap of Crimes in India</h1>
+        <button class="report-button" onclick="window.location.href='ReportCrime.html';">Report Crime</button>
         <form>
-            <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date" name="start-date" required>
+            <div class="input-group">
+                <div class="half">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" name="start-date" required>
+                </div>
+                <div class="half">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" name="end-date" required>
+                </div>
+            </div>
 
-            <label for="end-date">End Date:</label>
-            <input type="date" id="end-date" name="end-date" required>
-
-            <label for="location">Location:</label>
-            <select id="location" name="location" required>
-                <option value="" disabled selected>Select a city</option>
-                <option value="Agra">Agra</option>
-                <option value="Ahmedabad">Ahmedabad</option>
-                <option value="Allahabad">Allahabad</option>
-                <option value="Amritsar">Amritsar</option>
-                <option value="Bangalore">Bangalore</option>
-                <option value="Bhopal">Bhopal</option>
-                <option value="Bhubaneswar">Bhubaneswar</option>
-                <option value="Chandigarh">Chandigarh</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Coimbatore">Coimbatore</option>
-                <option value="Delhi">Delhi</option>
-                <option value="Guwahati">Guwahati</option>
-                <option value="Hyderabad">Hyderabad</option>
-                <option value="Indore">Indore</option>
-                <option value="Jaipur">Jaipur</option>
-                <option value="Kanpur">Kanpur</option>
-                <option value="Kolkata">Kolkata</option>
-                <option value="Lucknow">Lucknow</option>
-                <option value="Ludhiana">Ludhiana</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Nagpur">Nagpur</option>
-                <option value="Patna">Patna</option>
-                <option value="Pune">Pune</option>
-                <option value="Surat">Surat</option>
-                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
-                <option value="Vadodara">Vadodara</option>
-                <option value="Visakhapatnam">Visakhapatnam</option>
-
-            </select>
-
-            <label for="crime-type">Type of Crime:</label>
-            <select id="crime-type" name="crime-type" required>
-                <option value="" disabled selected>Select a crime type</option>
-                <option value="Theft">Theft</option>
-                <option value="Vandalism">Vandalism</option>
-                <option value="Assault">Assault</option>
-                <option value="Harassment">Harassment</option>
-                <option value="Murder">Murder</option>
-                <option value="Other">Other</option>
-            </select>
+            <div class="input-group">
+                <div class="half">
+                    <label for="location">Location:</label>
+                    <select id="location" name="location" required>
+                        <option value="" disabled selected>Select a city</option>
+                        <option value="Agra">Agra</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Allahabad">Allahabad</option>
+                        <option value="Amritsar">Amritsar</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Bhopal">Bhopal</option>
+                        <option value="Bhubaneswar">Bhubaneswar</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Coimbatore">Coimbatore</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Guwahati">Guwahati</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Indore">Indore</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Kanpur">Kanpur</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Lucknow">Lucknow</option>
+                        <option value="Ludhiana">Ludhiana</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Nagpur">Nagpur</option>
+                        <option value="Patna">Patna</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Surat">Surat</option>
+                        <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                        <option value="Vadodara">Vadodara</option>
+                        <option value="Visakhapatnam">Visakhapatnam</option>
+                    </select>
+                </div>
+                <div class="half">
+                    <label for="crime-type">Type of Crime:</label>
+                    <select id="crime-type" name="crime-type" required>
+                        <option value="" disabled selected>Select a crime type</option>
+                        <option value="Theft">Theft</option>
+                        <option value="Vandalism">Vandalism</option>
+                        <option value="Assault">Assault</option>
+                        <option value="Harassment">Harassment</option>
+                        <option value="Murder">Murder</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
 
             <button type="submit">Search</button>
         </form>

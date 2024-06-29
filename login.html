@@ -14,15 +14,45 @@
             <p class="alert-box">alert</p>
 
             <h1 class="heading">Login</h1>
-            <input type="email" placeholder="Enter email" autocomplete="off" class="email" required>
-            <input type="password" placeholder="Enter password" autocomplete="off" class="password" required>
-            <button class="submit-btn">Log in</button>
+            <form id="loginForm" onsubmit="return validateForm()">
+                <input type="email" id="email" placeholder="Enter email" autocomplete="off" class="email" required>
+                <input type="password" id="password" placeholder="Enter password" autocomplete="off" class="password" required>
+                <button type="submit" class="submit-btn">Log in</button>
+            </form>
             <a href="register.html" class="link">Don't have an account? Register one</a>
             <!-- forgot password -->
             <a href="forgot.html" class="link">Forgot password</a>
+
+            <!-- Anonymous Report Button -->
+            <a href="ReportCrime.html" class="anonymous-report-btn">Report Anonymous</a>
         </div>
     </div>
 
     <script src="form.js"></script>
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Perform simple validation (you can expand this as needed)
+            if (email === "" || password === "") {
+                alert("Please enter both email and password.");
+                return false;
+            }
+
+            // Example: Check if email and password are correct (replace with your authentication logic)
+            // For demo purposes, assume valid login and navigate to HeatMap.html
+            // Replace 'HeatMap.html' with the actual path to your HeatMap page
+            // Replace this check with your actual authentication logic
+            var isValidLogin = true; // Example: assume always valid for demo
+            if (isValidLogin) {
+                window.location.href = 'HeatMap.html';
+                return false; // Prevent form submission
+            } else {
+                alert("Invalid email or password. Please try again.");
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

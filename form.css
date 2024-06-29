@@ -120,3 +120,21 @@ input:focus::placeholder{
     text-align: center;
     transition: 1s;
 }
+.anonymous-report-btn, .submit-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    color: floralwhite;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.anonymous-report-btn:hover, .submit-btn:hover {
+    color: black;
+    background: rgb(255, 255, 255);
+}
