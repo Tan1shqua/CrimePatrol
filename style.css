@@ -1,7 +1,5 @@
-*
-/* Body styling */
-body {
-    background-image: url('image.png');
+* body {
+    background-image: url('./crime_scene.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,10 +11,9 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    color: #ffffff; /* Set text color to white */
+    color: #ffffff;
 }
 
-/* Wrapper styling */
 .wrapper {
     background: rgba(0, 0, 0, 0.7);
     padding: 30px;
@@ -26,14 +23,12 @@ body {
     width: 100%;
 }
 
-/* Form heading */
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #ffffff; /* Set text color to white */
+    color: #ffffff;
 }
 
-/* Input group styling */
 .input-group {
     position: relative;
     margin-bottom: 20px;
@@ -46,7 +41,7 @@ h2 {
     border-radius: 5px;
     outline: none;
     background: rgba(255, 255, 255, 0.1);
-    color: #ffffff; /* Set text color to white */
+    color: #ffffff;
 }
 
 .input-group label {
@@ -58,15 +53,14 @@ h2 {
     color: #999;
 }
 
-.input-group input:focus + label,
-.input-group input:valid + label {
+.input-group input:focus+label,
+.input-group input:valid+label {
     top: -15px;
     left: 10px;
-    color: #ffffff; /* Set text color to white */
+    color: #ffffff;
     font-size: 12px;
 }
 
-/* Forgot password link */
 .forgot-pass {
     text-align: right;
 }
@@ -76,7 +70,6 @@ h2 {
     color: #3498db;
 }
 
-/* Submit button styling */
 .btn {
     width: 100%;
     padding: 10px;
@@ -88,7 +81,6 @@ h2 {
     font-size: 16px;
 }
 
-/* Signup link styling */
 .sign-link {
     text-align: center;
     margin-top: 20px;
