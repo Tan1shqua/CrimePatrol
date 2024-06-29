@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Crime</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('./crime_scene.jpg');
+            /* Add your background image path here */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(34, 34, 34, 0.8);
+            /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .radio-group label {
+            margin-right: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #444;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        @media (min-width: 600px) {
+            .container {
+                width: 80%;
+                max-width: 500px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 70%;
+                max-width: 600px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 60%;
+                max-width: 700px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 50%;
+                max-width: 800px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Report Crime</h1>
+        <form>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="location">Location:</label>
+            <select id="location" name="location" required>
+                <option value="" disabled selected>Select a city</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Surat">Surat</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <!-- Add more cities as needed -->
+            </select>
+
+            <label>Type of Crime:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="crime-type" value="Theft" onclick="toggleOtherInput(false)"
+                        required>Theft</label>
+                <label><input type="radio" name="crime-type" value="Vandalism"
+                        onclick="toggleOtherInput(false)">Vandalism</label>
+                <label><input type="radio" name="crime-type" value="Assault"
+                        onclick="toggleOtherInput(false)">Assault</label>
+                <label><input type="radio" name="crime-type" value="Harassment"
+                        onclick="toggleOtherInput(false)">Harassment</label>
+                <label><input type="radio" name="crime-type" value="Murder"
+                        onclick="toggleOtherInput(false)">Murder</label>
+                <label><input type="radio" name="crime-type" value="Other"
+                        onclick="toggleOtherInput(true)">Other</label>
+            </div>
+            <input type="text" id="other-crime" name="other-crime" class="hidden" placeholder="Specify the crime">
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" placeholder="Describe the incident"
+                required></textarea>
+
+            <label for="reported-by">Reported by:</label>
+            <input type="text" id="reported-by" name="reported-by" placeholder="Your name" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleOtherInput(show) {
+            const otherCrimeInput = document.getElementById('other-crime');
+            if (show) {
+                otherCrimeInput.classList.remove('hidden');
+                otherCrimeInput.setAttribute('required', 'required');
+            } else {
+                otherCrimeInput.classList.add('hidden');
+                otherCrimeInput.removeAttribute('required');
+            }
+        }
+    </script>
+</body>
+
+</html>
