@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Crime</title>
+    <title>Heatmap of Crimes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('./crime_scene.jpg');
+            background-image: url('crime_scene.jpg');
             background-size: cover;
             background-position: center;
             color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
         }
@@ -26,11 +26,13 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             width: 90%;
-            max-width: 400px;
+            max-width: 800px;
+            margin-top: 20px;
         }
 
         h1 {
             text-align: center;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -40,7 +42,6 @@
         }
 
         input,
-        textarea,
         select {
             width: calc(100% - 20px);
             padding: 10px;
@@ -51,65 +52,56 @@
             color: #fff;
         }
 
-        input[type="radio"] {
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .radio-group label {
-            margin-right: 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
         button {
-            width: 100%;
+            width: 50%;
             padding: 10px;
             background-color: #444;
             border: none;
             border-radius: 5px;
             color: #fff;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
+            display: block;
+            margin: 0 auto;
         }
 
         button:hover {
             background-color: #555;
         }
 
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
         @media (min-width: 600px) {
             .container {
                 width: 80%;
-                max-width: 500px;
+                max-width: 900px;
             }
         }
 
         @media (min-width: 768px) {
             .container {
                 width: 70%;
-                max-width: 600px;
+                max-width: 1000px;
             }
         }
 
         @media (min-width: 992px) {
             .container {
                 width: 60%;
-                max-width: 700px;
+                max-width: 1100px;
             }
         }
 
         @media (min-width: 1200px) {
             .container {
                 width: 50%;
-                max-width: 800px;
+                max-width: 1200px;
             }
         }
     </style>
@@ -117,13 +109,13 @@
 
 <body>
     <div class="container">
-        <h1>Report Crime</h1>
+        <h1>Heatmap of Crimes in India</h1>
         <form>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date" required>
 
-            <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required>
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date" required>
 
             <label for="location">Location:</label>
             <select id="location" name="location" required>
@@ -155,47 +147,36 @@
                 <option value="Thiruvananthapuram">Thiruvananthapuram</option>
                 <option value="Vadodara">Vadodara</option>
                 <option value="Visakhapatnam">Visakhapatnam</option>
+
             </select>
 
-            <label>Type of Crime:</label>
-            <div class="radio-group">
-                <label><input type="radio" name="crime-type" value="Theft" onclick="toggleOtherInput(false)"
-                        required>Theft</label>
-                <label><input type="radio" name="crime-type" value="Vandalism"
-                        onclick="toggleOtherInput(false)">Vandalism</label>
-                <label><input type="radio" name="crime-type" value="Assault"
-                        onclick="toggleOtherInput(false)">Assault</label>
-                <label><input type="radio" name="crime-type" value="Harassment"
-                        onclick="toggleOtherInput(false)">Harassment</label>
-                <label><input type="radio" name="crime-type" value="Murder"
-                        onclick="toggleOtherInput(false)">Murder</label>
-                <label><input type="radio" name="crime-type" value="Other"
-                        onclick="toggleOtherInput(true)">Other</label>
-            </div>
-            <input type="text" id="other-crime" name="other-crime" class="hidden" placeholder="Specify the crime">
+            <label for="crime-type">Type of Crime:</label>
+            <select id="crime-type" name="crime-type" required>
+                <option value="" disabled selected>Select a crime type</option>
+                <option value="Theft">Theft</option>
+                <option value="Vandalism">Vandalism</option>
+                <option value="Assault">Assault</option>
+                <option value="Harassment">Harassment</option>
+                <option value="Murder">Murder</option>
+                <option value="Other">Other</option>
+            </select>
 
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" placeholder="Describe the incident"
-                required></textarea>
-
-            <label for="reported-by">Reported by:</label>
-            <input type="text" id="reported-by" name="reported-by" placeholder="Your name" required>
-
-            <button type="submit">Submit</button>
+            <button type="submit">Search</button>
         </form>
+        <div id="map"></div>
     </div>
 
+    <!-- Add your map library and script below -->
+    <!-- Example using Leaflet.js -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        function toggleOtherInput(show) {
-            const otherCrimeInput = document.getElementById('other-crime');
-            if (show) {
-                otherCrimeInput.classList.remove('hidden');
-                otherCrimeInput.setAttribute('required', 'required');
-            } else {
-                otherCrimeInput.classList.add('hidden');
-                otherCrimeInput.removeAttribute('required');
-            }
-        }
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Centered on India
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add more JavaScript here to add heatmap functionality
     </script>
 </body>
 
