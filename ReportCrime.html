@@ -118,7 +118,7 @@
 <body>
     <div class="container">
         <h1>Report Crime</h1>
-        <form>
+        <form id="crimeReportForm">
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" required>
 
@@ -196,6 +196,43 @@
                 otherCrimeInput.removeAttribute('required');
             }
         }
+
+        document.getElementById('crimeReportForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form data
+            const formData = {
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                location: document.getElementById('location').value,
+                crimeType: document.querySelector('input[name="crime-type"]:checked').value,
+                description: document.getElementById('description').value,
+                reportedBy: document.getElementById('reported-by').value
+            };
+
+            // Getting user's geolocation
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Attach geolocation data to form data
+                    formData.latitude = latitude;
+                    formData.longitude = longitude;
+
+                    // Sending formData to our server for processing
+                    console.log(formData);
+                    alert('Form submitted successfully!');
+
+                    // Redirecting to heatmap
+                    window.location.href = 'HeatMap.html';
+                }, function (error) {
+                    alert('Error getting geolocation: ' + error.message);
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        });
     </script>
 </body>
 
