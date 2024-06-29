@@ -1,4 +1,6 @@
 # CrimePatrol - Real-Time Crime Reporting Application
+DEMO -
+![Screenshot 2024-06-29 200401](https://github.com/Tan1shqua/CrimePatrol/assets/127236862/d5a1a4b9-cc31-423b-b3ff-044964655bfe)
 
 Welcome to **CrimePatrol**, an innovative real-time crime reporting application built with the power of Django and modern web technologies. CrimePatrol is designed to empower citizens, enhance public safety, and streamline the crime reporting process. Dive into the technical intricacies of this project and learn how you can contribute to making our communities safer.
 
