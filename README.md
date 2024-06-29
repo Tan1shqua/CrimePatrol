@@ -1,6 +1,6 @@
-# CrimePetrol - Real-Time Crime Reporting Application
+# CrimePatrol - Real-Time Crime Reporting Application
 
-Welcome to **CrimePetrol**, an innovative real-time crime reporting application built with the power of Django and modern web technologies. CrimePetrol is designed to empower citizens, enhance public safety, and streamline the crime reporting process. Dive into the technical intricacies of this project and learn how you can contribute to making our communities safer.
+Welcome to **CrimePatrol**, an innovative real-time crime reporting application built with the power of Django and modern web technologies. CrimePatrol is designed to empower citizens, enhance public safety, and streamline the crime reporting process. Dive into the technical intricacies of this project and learn how you can contribute to making our communities safer.
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -14,7 +14,7 @@ Welcome to **CrimePetrol**, an innovative real-time crime reporting application 
 9. [License](#license)
 
 ## Introduction
-CrimePetrol is a full-stack web application that provides a platform for citizens to report crimes in real-time. Leveraging the Django framework, the app offers a robust backend for managing reports, user authentication, and geospatial data. The frontend integrates Leaflet.js for interactive maps, allowing users to visualize crime data dynamically.
+CrimePatrol is a full-stack web application that provides a platform for citizens to report crimes in real-time. Leveraging the Django framework, the app offers a robust backend for managing reports, user authentication, and geospatial data. The frontend integrates Leaflet.js for interactive maps, allowing users to visualize crime data dynamically.
 
 ## Features
 - **Real-Time Crime Reporting**: Citizens can submit detailed crime reports with descriptions, locations, and multimedia attachments.
@@ -25,7 +25,7 @@ CrimePetrol is a full-stack web application that provides a platform for citizen
 - **Search and Filtering**: Easily search and filter reports based on crime type, location, and date.
 
 ## Architecture
-CrimePetrol is architected to ensure scalability, security, and ease of use:
+CrimePatrol is architected to ensure scalability, security, and ease of use:
 
 - **Backend**: Django powers the backend, utilizing Django Rest Framework (DRF) for creating RESTful APIs and Channels for real-time features.
 - **Frontend**: HTML, CSS, and JavaScript (with Leaflet.js) provide a responsive and interactive user interface.
@@ -40,7 +40,7 @@ CrimePetrol is architected to ensure scalability, security, and ease of use:
 5. **Admin Management**: Admins manage reports, users, and overall system settings through a secure admin interface.
 
 ## Setup and Installation
-Follow these steps to set up CrimePetrol on your local machine:
+Follow these steps to set up CrimePatrol on your local machine:
 
 ### Prerequisites
 - Python 3.8+
@@ -50,8 +50,8 @@ Follow these steps to set up CrimePetrol on your local machine:
 ### Installation
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/CrimePetrol.git
-   cd CrimePetrol
+   git clone https://github.com/your-username/CrimePatrol.git
+   cd CrimePatrol
    ```
 
 2. **Create and Activate Virtual Environment**:
@@ -72,7 +72,7 @@ Follow these steps to set up CrimePetrol on your local machine:
      DATABASES = {
          'default': {
              'ENGINE': 'django.db.backends.postgresql',
-             'NAME': 'CrimePetrol_db',
+             'NAME': 'CrimePatrol_db',
              'USER': 'your_db_user',
              'PASSWORD': 'your_db_password',
              'HOST': 'localhost',
@@ -101,7 +101,7 @@ Follow these steps to set up CrimePetrol on your local machine:
    Open your browser and go to `http://localhost:8000`.
 
 ## User Management and Access Control
-CrimePetrol incorporates a robust user management system with clear access controls:
+CrimePatrol incorporates a robust user management system with clear access controls:
 
 - **Roles**: Users are categorized as Citizens, Police, or Admins.
 - **Authentication**: Utilizes Django's authentication along with OAuth for social logins.
@@ -117,7 +117,7 @@ CrimePetrol incorporates a robust user management system with clear access contr
 - **HTML/CSS/JavaScript**: Core web technologies for frontend development.
 
 ## API Endpoints
-CrimePetrol exposes a set of RESTful APIs for various functionalities:
+CrimePatrol exposes a set of RESTful APIs for various functionalities:
 
 - **User Authentication**: `/api/auth/`
 - **Crime Reports**: `/api/reports/`
@@ -135,11 +135,12 @@ We welcome contributions from the community! To contribute:
 5. Create a pull request.
 
 ## License
-CrimePetrol is licensed under the MIT License. See `LICENSE` for more information.
+CrimePatrol is licensed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-Thank you for checking out CrimePetrol! Together, we can make our communities safer and more connected. Happy coding!
+Thank you for checking out CrimePatrol! Together, we can make our communities safer and more connected. Happy coding!
+
 
 ![Screenshot 2024-06-29 162420](https://github.com/davesohamm/CrimePetrol/assets/127236862/3536aefc-4411-4c57-b5f8-5d5867b31542)
 ![Screenshot 2024-06-29 162434](https://github.com/davesohamm/CrimePetrol/assets/127236862/fbb14311-92cc-4c1e-b7a3-7a5ff9f9846c)
