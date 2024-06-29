@@ -1,0 +1,104 @@
+*
+/* Body styling */
+body {
+    background-image: url('image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: #ffffff; /* Set text color to white */
+}
+
+/* Wrapper styling */
+.wrapper {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Form heading */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff; /* Set text color to white */
+}
+
+/* Input group styling */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Set text color to white */
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: 0.3s;
+    pointer-events: none;
+    color: #999;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -15px;
+    left: 10px;
+    color: #ffffff; /* Set text color to white */
+    font-size: 12px;
+}
+
+/* Forgot password link */
+.forgot-pass {
+    text-align: right;
+}
+
+.forgot-pass a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+/* Submit button styling */
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Signup link styling */
+.sign-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sign-link a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.signUp-link {
+    margin-left: 5px;
+}
